@@ -10,11 +10,12 @@
 <body dir="rtl">
     <div id="app">
         <header>
-            <h3>لیست کارهای روزمره</h3>
+          
             <div>
                 <input type="text" v-model.trim="newTodo" />
                 <button type="button" class="btn btn-sm btn-primary" @click="addTodo">اضافه</button>
             </div>
+            <h4>Todo List</h4>
         </header>
         <div id="content">
             <template v-for="todo in todos" :key="todo.id">
