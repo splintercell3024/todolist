@@ -1,0 +1,75 @@
+*{
+    text-align: right;
+    color:white;
+    font-family: IRANSans;
+}
+header{
+    padding: 20px;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+header p{
+    text-align: right;
+}
+header input{
+    border-radius: 5px;
+    width: 400px;
+    height:35px;
+    color:black;
+    margin-left: 5px;
+    text-align: left;
+    border: none;
+
+}
+#content{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: 440px;
+    direction: ltr;
+    /* margin: 10px; */
+}
+#todo{
+    direction: ltr;
+border: 1px solid #eee;
+box-shadow: 0 2px 2px #ccc;
+background-color: black;
+text-align: left;
+/* color:rgb(128, 113, 113); */
+padding: 10px;
+/* margin: 10px; */
+width: 200px;
+height:200px;
+position: relative;
+}
+div.complete{
+    background-color: rgb(50, 148, 50)!important;
+}
+#todo span{
+    position: absolute;
+    background-color: red;
+    top:0;
+    right:0;
+    color:white;
+    /* border: 1px solid #eee; */
+    cursor: pointer;
+    padding: 0 8px;
+    margin: 5px;
+}
+#todo p{
+    text-align: left;
+/* background-color: black; */
+color: white;
+}
+
+footer{
+    padding: 20px;
+    background-color: rgb(25, 22, 27);
+    color: white;
+    text-align: left;
+    /* text-align: r;
+    justify-content: center; */
+}

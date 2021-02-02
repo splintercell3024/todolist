@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body dir="rtl">
+    <div id="app">
+        <header>
+            <h3>لیست کارهای روزمره</h3>
+            <div>
+                <input type="text" v-model.trim="newTodo" />
+                <button type="button" class="btn btn-sm btn-primary" @click="addTodo">اضافه</button>
+            </div>
+        </header>
+        <div id="content">
+            <template v-for="todo in todos" :key="todo.id">
+               <todo-item 
+               :todo="todo"
+               @remove-item="remove(todo.id)"
+               ></todo-item>
+            </template>
+        </div>
+        <footer>
+            <p>حق کپی رایت محفوظ است</p>
+        </footer>
+    </div>
+    <script src="./js/vue3.js"></script>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./axios.min.js"></script>
+    <script>
+        const app = Vue.createApp({
+         
+            data() {
+                return {
+                    todos: [],
+                    newTodo: ''
+                }
+            },
+            methods: {
+                addTodo() {
+                    if (!this.newTodo) return;
+                    this.todos.push({ id: this.todos.length ? this.todos[this.todos.length - 1].id + 1 : 1, item: this.newTodo, isCompleted: false })
+                    this.newTodo = ''
+                },
+                remove(id) {
+                    this.todos = this.todos.filter(function (todo) {
+                        return todo.id !== id
+                    })
+                }
+            },
+        })
+        app.component('todo-item',{
+            template:`
+            <div id="todo" :class="{complete:todo.isCompleted}">
+                    <span @click="del">x</span>
+                    <p>{{todo.id}}</p>
+                    <p @click="todo.isCompleted=!todo.isCompleted">{{todo.item}}</p>
+            </div>
+                `,
+            data(){
+                return{
+
+                }
+            },
+            props:['todo'],
+            methods:{
+                del(){
+                    this.$emit('remove-item')
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
